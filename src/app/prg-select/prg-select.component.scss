@@ -1,0 +1,72 @@
+%caretStyles {
+  background-image: url(../../assets/caret-down.svg);
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 24px;
+  height: 24px;
+}
+
+:host {
+  display: inline-block;
+  width: 100%;
+  outline: none;
+}
+
+.select-trigger {
+  width: 180px;
+  height: 48px;
+  border: 1px solid transparent;
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  cursor: pointer;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 5px 10px rgb(0 0 0 / 10%);
+  background: #fff;
+  transition: all 150ms ease;
+
+  &:hover {
+    border: 1px solid #212121;
+  }
+
+  &.active {
+    z-index: 100000;
+  }
+
+  &.focus {
+    border: 1px solid #1875d1;
+  }
+}
+
+.select-arrow {
+  margin-left: auto;
+  transition: all 150ms ease;
+
+  &.caret-down,
+  &.caret-up {
+    @extend %caretStyles;
+  }
+
+  &.caret-up {
+    transform: rotate(180deg);
+  }
+}
+
+.select-panel-wrap {
+  width: inherit;
+  height: inherit;
+}
+
+.select-panel {
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+  overflow: auto;
+  max-height: 256px;
+  background-color: #fff;
+  border-radius: 6px;
+  box-shadow: rgb(0 0 0 / 20%) 0px 5px 5px -3px,
+    rgb(0 0 0 / 14%) 0px 8px 10px 1px, rgb(0 0 0 / 12%) 0px 3px 14px 2px;
+}

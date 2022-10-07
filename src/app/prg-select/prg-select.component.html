@@ -1,0 +1,17 @@
+<div class="select-trigger" [ngClass]="{ active: panelOpen, focus: focused }" (click)="open()" cdkOverlayOrigin
+  #origin="cdkOverlayOrigin" #trigger>
+  <div class="select-value">
+    {{ displayOption ? displayOption.value : "" }}
+  </div>
+  <div class="select-arrow" [ngClass]="{ 'caret-down': !panelOpen, 'caret-up': panelOpen }"></div>
+</div>
+<ng-template cdkConnectedOverlay cdkConnectedOverlayHasBackdrop cdkConnectedOverlayLockPosition
+  cdkConnectedOverlayBackdropClass="cdk-overlay-transparent-backdrop" [cdkConnectedOverlayOrigin]="origin"
+  [cdkConnectedOverlayOpen]="panelOpen" [cdkConnectedOverlayWidth]="triggerRect?.width" (backdropClick)="close()"
+  (attach)="onAttach()">
+  <div class="select-panel-wrap" [@selectAnim]>
+    <div class="select-panel" tabindex="-1" role="listbox" aria-label="" #panel>
+      <ng-content></ng-content>
+    </div>
+  </div>
+</ng-template>
